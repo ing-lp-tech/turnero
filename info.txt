@@ -1,0 +1,5 @@
+video de proyecto
+https://www.youtube.com/watch?v=GUgf4UmYnHQ&list=PL3Qv7aeTNq0dtv2uabloI2lka5JXtk4sx&index=3
+
+pagina de instrcciones para empezar proyecto
+https://developers.google.com/sheets/api/quickstart/js?hl=es-419#prereqs

@@ -9,7 +9,7 @@ const DISCOVERY_DOC =
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+const SCOPES = "https://www.googleapis.com/auth/spreadsheets";
 
 let tokenClient;
 let gapiInited = false;
@@ -73,7 +73,8 @@ function handleAuthClick() {
     }
     document.getElementById("signout_button").style.visibility = "visible";
     document.getElementById("authorize_button").innerText = "Refresh";
-    await listMajors();
+    await getTurnos();
+    actualizarTarjetas();
   };
 
   if (gapi.client.getToken() === null) {
@@ -109,6 +110,7 @@ async function listMajors() {
   try {
     // Fetch first 10 files
     response = await gapi.client.sheets.spreadsheets.values.get({
+      /* id de la hoja de google sheets, esta en la url */
       spreadsheetId: "1ZCUQWYMLJ_Yad620mI_zUCXSHbT-1naBDFPp1WMwP9Q",
       range: "Turnos!A:G",
     });

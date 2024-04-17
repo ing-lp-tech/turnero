@@ -5,16 +5,18 @@ async function getTurnos() {
   let response;
   try {
     response = await gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET,
-      range: hoja + "!A:G",
+      spreadsheetId: "1ZCUQWYMLJ_Yad620mI_zUCXSHbT-1naBDFPp1WMwP9Q",
+      range: "Turnos!A:G",
     });
   } catch (err) {
-    document.getElementById("content").innerText = err.message;
+    /* document.getElementById("content").innerText = err.message; */
+    console.error(err);
     return;
   }
   const range = response.result;
   if (!range || !range.values || range.values.length == 0) {
-    document.getElementById("content").innerText = "No values found.";
+    /* document.getElementById("content").innerText = "No values found."; */
+    console.warn("no se encontraron valores");
     return;
   }
 
@@ -28,13 +30,15 @@ async function getTurnos() {
       modelo: fila[3],
       problema: fila[4],
       fecha_terminado: fila[5],
-      comentario: fila[6]
+      comentario: fila[6],
     };
     turnos.push(nuevoTurno);
   });
+  console.log("turnos:", turnos);
 }
 
-async function editTurno(id, contenido) {
+async function editTurno(contenido) {
+  console.log("editTurno-id y contenido:", contenido);
   const update = [
     contenido.id,
     contenido.cliente,
@@ -43,13 +47,14 @@ async function editTurno(id, contenido) {
     contenido.problema,
     new Date().toISOString(),
     contenido.comentario,
-  ]
-  const filaAEditar = parseInt(id)+1;
+  ];
+
+  const filaAEditar = parseInt(contenido.id) + 1;
   response = await gapi.client.sheets.spreadsheets.values.update({
-    spreadsheetId: SPREADSHEET,
-    range: `${hoja}!A${filaAEditar}:G${filaAEditar}`,
+    spreadsheetId: "1ZCUQWYMLJ_Yad620mI_zUCXSHbT-1naBDFPp1WMwP9Q",
+    range: `${"Turnos"}!A${filaAEditar}:G${filaAEditar}`,
     values: [update],
-    valueInputOption:"USER_ENTERED"
+    valueInputOption: "USER_ENTERED",
   });
   return response;
 }

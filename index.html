@@ -26,21 +26,9 @@
 				<label for="comentario">Comentario del técnico: </label>
 				<input name="comentario" id="comentario"></input>
 			</div>
-			<button id="finalizar">Marcar finalizado</button>
+			<button id="finalizar" >Marcar finalizado</button>
 		</div>
 	</main>
-
-
-	<!--Add buttons to initiate auth sequence and sign out-->
-	<!-- <div>
-		<button id="authorize_button" onclick="handleAuthClick()">Iniciar sesión</button>
-		<button id="signout_button" onclick="handleSignoutClick()">Cerrar sesión</button>
-	</div>
-	<script src="js/auth.js"></script>
-	<footer>
-		<p>Hecho con amor por Calo de <a href="https://www.youtube.com/channel/UCWDxiTN0CBZzVwvHFQUk92w" target="_blank">puntoJson</a></p>
-		<p><a href="https://youtu.be/GUgf4UmYnHQ" target="_blank">¿Cómo lo hice?</a></p>
-	</footer> -->
 
 
 	<p>Sheets API Quickstart</p>
@@ -48,10 +36,12 @@
   <!--Autenticacion-->
   <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
   <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+  
   <script async defer src="https://apis.google.com/js/api.js" id="gapi" ></script>
   <script async defer src="https://accounts.google.com/gsi/client" id="gis" ></script>
   <script async defer src="js/auth.js"></script>
-
+  <script async defer src="js/sheets.js"></script>
 </body>
 </html>
 

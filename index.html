@@ -17,6 +17,10 @@
 		<h1>Turnos siguientes</h1>
 	</header>
 	<main>
+		<!--Autenticacion-->
+		<button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+		<button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
 		<div id="turnosContainer"></div>
 		<div id="detalleContainer" class="escondido">
 			<h2 id="cliente">Nombre</h2>
@@ -28,14 +32,12 @@
 			</div>
 			<button id="finalizar" >Marcar finalizado</button>
 		</div>
+
+		<div id="turnosTable"></div>
+		<div id="tablaContainer"></div>
 	</main>
 
-
-	<p>Sheets API Quickstart</p>
-
-  <!--Autenticacion-->
-  <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-  <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+  
 
   
   <script async defer src="https://apis.google.com/js/api.js" id="gapi" ></script>

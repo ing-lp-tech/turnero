@@ -2,6 +2,8 @@
 
 const turnosContainer = document.getElementById("turnosContainer");
 const detalleContainer = document.getElementById("detalleContainer");
+const tableContainer = document.getElementById("tablaContainer");
+
 let indiceSeleccionado;
 
 const clienteElement = document.getElementById("cliente");
@@ -9,8 +11,9 @@ const modeloElement = document.getElementById("modelo");
 const problemaElement = document.getElementById("problema");
 const comentarioElement = document.getElementById("comentario");
 const marcarTerminadoElement = document.getElementById("finalizar");
-
-function createTarjeta(turno, index) {
+tablaContainer;
+/* function createTarjeta(turno, index) {
+  console.log("turno, index", turno, index);
   const nuevaTarjeta = document.createElement("div");
   nuevaTarjeta.classList = "tarjeta";
   nuevaTarjeta.innerHTML = `
@@ -21,12 +24,61 @@ function createTarjeta(turno, index) {
   `;
   nuevaTarjeta.addEventListener("click", () => actualizarDetalle(index));
   turnosContainer.appendChild(nuevaTarjeta);
+} */
+
+function createTarjeta(turno, index) {
+  console.log("turno, index", turno, index);
+  const nuevaTarjeta = document.createElement("div");
+  nuevaTarjeta.classList = "tarjeta";
+
+  // Construir el contenido HTML dinámicamente
+  let tarjetaHTML = "";
+  Object.keys(turno).forEach((key) => {
+    tarjetaHTML += `<p><strong>${key}:</strong> ${turno[key]}</p>`;
+  });
+
+  // Asignar el contenido HTML a la tarjeta
+  nuevaTarjeta.innerHTML = tarjetaHTML;
+
+  // Agregar el evento click
+  nuevaTarjeta.addEventListener("click", () => actualizarDetalle(index));
+
+  // Agregar la tarjeta al contenedor
+  turnosContainer.appendChild(nuevaTarjeta);
+}
+
+function createTabla(turno, index) {
+  console.log("turno, index", turno, index);
+  const nuevaTabla = document.createElement("table");
+  nuevaTabla.classList = "table table-bordered table-striped table-responsive";
+
+  // Construir el encabezado de la tabla
+  let tablaHTML = "<thead><tr>";
+  Object.keys(turno).forEach((key) => {
+    tablaHTML += `<th>${key}</th>`;
+  });
+  tablaHTML += "</tr></thead>";
+
+  // Construir filas de datos
+  tablaHTML += "<tbody><tr>";
+  Object.values(turno).forEach((value) => {
+    tablaHTML += `<td>${value}</td>`;
+  });
+  tablaHTML += "</tr></tbody>";
+
+  // Asignar el contenido HTML a la tabla
+  nuevaTabla.innerHTML = tablaHTML;
+
+  // Agregar la tabla al contenedor
+  const tablaContainer = document.getElementById("tablaContainer");
+  tableContainer.appendChild(nuevaTabla);
 }
 
 function actualizarTarjetas() {
   turnosContainer.innerHTML = "";
   turnos.forEach((turno, i) => {
     createTarjeta(turno, i);
+    createTabla(turno, i);
   });
 }
 

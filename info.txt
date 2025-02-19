@@ -3,3 +3,6 @@ https://www.youtube.com/watch?v=GUgf4UmYnHQ&list=PL3Qv7aeTNq0dtv2uabloI2lka5JXtk
 
 pagina de instrcciones para empezar proyecto
 https://developers.google.com/sheets/api/quickstart/js?hl=es-419#prereqs
+
+video app responsive
+https://www.patreon.com/posts/72888869
